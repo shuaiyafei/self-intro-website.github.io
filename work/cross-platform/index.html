@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Case study: a shared cross-platform runtime, component standardization system, and CI/CD quality gates."
+    />
+    <meta name="theme-color" content="#f2f0eb" />
+    <title>Unified Cross-Platform Runtime — Yafei Shuai</title>
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../assets/site.css" />
+  </head>
+  <body class="case-page case-page--cross">
+    <header class="site-header" data-header>
+      <a class="brand" href="../../index.html" aria-label="Yafei Shuai, home">
+        <span class="brand-mark">YF</span>
+        <span class="brand-name">Yafei Shuai</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="../../index.html#top">Home</a>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#work">Work</a>
+        <a href="../../index.html#experience">Experience</a>
+      </nav>
+      <a class="header-contact" href="mailto:shuaiyafei@foxmail.com">
+        Let’s talk
+        <i data-lucide="arrow-up-right"></i>
+      </a>
+      <button class="menu-button" type="button" aria-label="Open menu" data-menu-button>
+        <i data-lucide="menu"></i>
+      </button>
+    </header>
+
+    <div class="mobile-menu" data-mobile-menu>
+      <button class="menu-close" type="button" aria-label="Close menu" data-menu-close>
+        <i data-lucide="x"></i>
+      </button>
+      <nav aria-label="Mobile navigation">
+        <a href="../../index.html#top">Home</a>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#work">Work</a>
+        <a href="../../index.html#experience">Experience</a>
+        <a href="mailto:shuaiyafei@foxmail.com">Contact</a>
+      </nav>
+    </div>
+
+    <main>
+      <section class="case-hero section-shell">
+        <a class="back-link" href="../../index.html#work">
+          <i data-lucide="arrow-left"></i>
+          Selected work
+        </a>
+        <p class="case-label">Cross-Platform Infrastructure · 2023 — 2025</p>
+        <h1>Unified Cross-Platform<br />Runtime</h1>
+        <p class="case-lead">
+          A shared component model, runtime, and engineering system for delivering consistent
+          experiences across iOS, Android, and HarmonyOS.
+        </p>
+        <div class="case-meta">
+          <div><span>Role</span><strong>Platform Engineer</strong></div>
+          <div><span>Focus</span><strong>DSL, Runtime, Tooling, Quality</strong></div>
+          <div><span>Scale</span><strong>10 Apps · 100+ Bundles</strong></div>
+        </div>
+      </section>
+
+      <figure class="case-cover section-shell">
+        <img
+          src="../../assets/images/cross-platform-system.jpg"
+          alt="A central runtime distributing a shared interface model to several device types"
+        />
+      </figure>
+
+      <section class="case-impact section-shell">
+        <article><strong>50%</strong><span>lower integration cost</span></article>
+        <article><strong>40%+</strong><span>fewer consistency defects</span></article>
+        <article><strong>60%</strong><span>reduction in JS crashes</span></article>
+        <article><strong>15%</strong><span>smaller bundle size</span></article>
+      </section>
+
+      <section class="case-story section-shell">
+        <div class="case-story__aside">
+          <span>01</span>
+          <p>The challenge</p>
+        </div>
+        <div class="case-story__body">
+          <h2>Multiple platforms had accumulated multiple ways of building the same thing.</h2>
+          <p>
+            Product teams maintained duplicated implementations, private APIs, and platform-specific
+            workarounds. This raised migration cost, introduced behavioral inconsistencies, and made
+            foundational upgrades increasingly risky across independent apps and more than 100
+            bundles.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-story case-story--tinted">
+        <div class="section-shell case-story__grid">
+          <div class="case-story__aside">
+            <span>02</span>
+            <p>The system</p>
+          </div>
+          <div class="case-story__body">
+            <h2>Standardize the model, then reinforce it through the delivery lifecycle.</h2>
+            <div class="feature-grid">
+              <article>
+                <i data-lucide="layers-3"></i>
+                <h3>Unified DSL</h3>
+                <p>
+                  Helped define a React Hooks-based component model and explicit mappings between
+                  logic and rendering layers for consistent behavior across platforms.
+                </p>
+              </article>
+              <article>
+                <i data-lucide="square-terminal"></i>
+                <h3>Developer tooling</h3>
+                <p>
+                  Built CLI capabilities for view-tree inspection, performance benchmarks, package
+                  analysis, and on-demand dependency packaging.
+                </p>
+              </article>
+              <article>
+                <i data-lucide="scan-line"></i>
+                <h3>Static and runtime controls</h3>
+                <p>
+                  Added AST-based CI scanning and runtime reporting to prevent private API usage
+                  from returning after teams completed standardization.
+                </p>
+              </article>
+              <article>
+                <i data-lucide="activity"></i>
+                <h3>Progressive delivery</h3>
+                <p>
+                  Connected staged rollout, error and blank-screen monitoring, automated alerts,
+                  and emergency rollback into one operational feedback loop.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="system-map section-shell">
+        <div class="section-index">
+          <span>03</span>
+          <p>Delivery model</p>
+        </div>
+        <div class="system-flow">
+          <div class="flow-node">
+            <span>Author once</span>
+            <strong>Shared DSL & Components</strong>
+          </div>
+          <i data-lucide="arrow-right"></i>
+          <div class="flow-node flow-node--accent">
+            <span>Build with confidence</span>
+            <strong>CLI · AST Gates · Benchmarks</strong>
+          </div>
+          <i data-lucide="arrow-right"></i>
+          <div class="flow-node">
+            <span>Run everywhere</span>
+            <strong>iOS · Android · HarmonyOS</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-story section-shell">
+        <div class="case-story__aside">
+          <span>04</span>
+          <p>The outcome</p>
+        </div>
+        <div class="case-story__body">
+          <h2>A migration program became a durable engineering system.</h2>
+          <p>
+            The platform reached 95% standardization, prevented new non-standard API usage through
+            CI/CD gates, reduced JavaScript crashes by about 60%, and cut bundle size by roughly
+            15%. The unified card model also reduced integration effort by around 50% and supported
+            on-time HarmonyOS delivery.
+          </p>
+        </div>
+      </section>
+
+      <a class="next-project" href="../governance-platform/index.html">
+        <span>Next project</span>
+        <strong>Engineering Governance Platform</strong>
+        <i data-lucide="arrow-right"></i>
+      </a>
+    </main>
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script src="../../assets/site.js"></script>
+  </body>
+</html>
