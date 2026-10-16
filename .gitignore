@@ -1,0 +1,10 @@
+design/v1/exports/
+design/v1/assets/hero-sculpture-original.png
+node_modules/
+dist/
+.ssr/
+.env
+.env.*
+!.env.example
+.DS_Store
+artifacts/

@@ -1,0 +1,7 @@
+dist/
+.ssr/
+node_modules/
+design/
+assets/
+public/
+package-lock.json
