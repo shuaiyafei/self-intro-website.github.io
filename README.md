@@ -26,6 +26,7 @@ npm run preview
 | --- | --- |
 | `src/pages/` | Homepage, case study, notes, article, and 404 React views |
 | `src/components/` | Shared navigation, footer, project, and notes components |
+| `src/hooks/` | Desktop section paging and input handling |
 | `src/data/profile.ts` | Personal introduction, contacts, and experience |
 | `src/data/projects.ts` | The three migrated project case studies |
 | `src/content/notes/` | Markdown articles and authoring instructions |
@@ -61,6 +62,8 @@ The workflow uses the automatically provided `GITHUB_TOKEN`. Publishing needs `c
 The build generates `/`, all three `/work/<slug>/` pages, `/notes/`, published note pages, and `/404.html`. Existing `/work/<slug>/index.html` URLs continue to work because each route has a real generated file. There is no catch-all SPA redirect.
 
 Prerendered HTML includes the main content and metadata before JavaScript runs. React hydrates it for interactive navigation controls. The notes loader excludes drafts and future-dated posts and sanitizes Markdown HTML.
+
+The header stays visible while scrolling on all screen sizes. Mobile keeps continuous scrolling with header-aware anchor offsets. On desktop (961px and wider), the homepage scrolls one section per wheel gesture, with native scrolling inside content taller than the viewport. Anchor links, keyboard navigation, and reduced-motion preferences remain supported; case studies and note pages use normal reading flow.
 
 To roll back, revert the relevant source commit on `main` and rerun the workflow. The generated branch retains earlier deployment commits and records their source revisions. The previous hand-authored static site also remains in the original Git history at `4e5605a238a3dbecad4ff0f9f2404e0c09200171`; restoring it requires the old branch-based Pages configuration as well.
 

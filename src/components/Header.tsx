@@ -12,7 +12,7 @@ export function Header({ home = false }: { home?: boolean }) {
     function onKey(event: KeyboardEvent) {
       if (event.key === "Escape" && open) {
         setOpen(false);
-        buttonRef.current?.focus();
+        buttonRef.current?.focus({ preventScroll: true });
       }
     }
     function onPointer(event: PointerEvent) {

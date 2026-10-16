@@ -6,8 +6,10 @@ import { SectionHeading } from "../components/SectionHeading";
 import { Footer } from "../components/Footer";
 import { ProjectCard } from "../components/ProjectCard";
 import { NotesList } from "../components/NotesList";
+import { useSectionPaging } from "../hooks/useSectionPaging";
 
 export function HomePage() {
+  useSectionPaging();
   return (
     <>
       <section className="hero" aria-labelledby="hero-title">
@@ -122,11 +124,13 @@ export function HomePage() {
               From shared foundations to intelligent tools.
             </p>
           </div>
-          <ProjectCard project={projects[0]} index={0} featured />
-          <div className="project-grid">
-            {projects.slice(1).map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index + 1} />
-            ))}
+          <div className="selected-projects">
+            <ProjectCard project={projects[0]} index={0} featured />
+            <div className="project-grid">
+              {projects.slice(1).map((project, index) => (
+                <ProjectCard key={project.slug} project={project} index={index + 1} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
