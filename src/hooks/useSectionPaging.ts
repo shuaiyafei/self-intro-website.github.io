@@ -8,6 +8,9 @@ export function useSectionPaging() {
     let accumulated = 0;
     let lastWheelAt = 0;
     let locked = false;
+    let transitionDirection = 0;
+    let transitionOrigin = 0;
+    let transitionTarget = 0;
     let frame = 0;
 
     function reset() {
@@ -15,6 +18,29 @@ export function useSectionPaging() {
       frame = 0;
       locked = false;
       accumulated = 0;
+      lastWheelAt = 0;
+      transitionDirection = 0;
+    }
+
+    function transition(target: number, origin: number, direction: number) {
+      locked = true;
+      transitionDirection = direction;
+      transitionOrigin = origin;
+      transitionTarget = target;
+      const started = performance.now();
+      let settled = 0;
+      window.scrollTo({ top: target, behavior: reducedMotion.matches ? "instant" : "smooth" });
+
+      // Release when the transition ends, even if wheel input continues.
+      function finish() {
+        settled = Math.abs(window.scrollY - target) < 2 ? settled + 1 : 0;
+        if (settled >= 3 || performance.now() - started > 3000) {
+          reset();
+        } else {
+          frame = window.requestAnimationFrame(finish);
+        }
+      }
+      frame = window.requestAnimationFrame(finish);
     }
 
     function onWheel(event: WheelEvent) {
@@ -46,7 +72,12 @@ export function useSectionPaging() {
       const now = performance.now();
       if (locked) {
         event.preventDefault();
-        lastWheelAt = now;
+        if (direction !== transitionDirection) {
+          const target = transitionOrigin;
+          const origin = transitionTarget;
+          reset();
+          transition(target, origin, direction);
+        }
         return;
       }
       const headerHeight = document.querySelector(".header")?.getBoundingClientRect().height ?? 0;
@@ -84,35 +115,20 @@ export function useSectionPaging() {
         0,
         Math.min(starts[next], document.documentElement.scrollHeight - window.innerHeight),
       );
-      locked = true;
-      const started = now;
-      let settled = 0;
-      window.scrollTo({ top: target, behavior: reducedMotion.matches ? "instant" : "smooth" });
-
-      // Wait for both the transition and trackpad momentum to finish.
-      function finish() {
-        settled = Math.abs(window.scrollY - target) < 2 ? settled + 1 : 0;
-        if (
-          (settled >= 3 && performance.now() - lastWheelAt > 180) ||
-          performance.now() - started > 3000
-        ) {
-          reset();
-        } else {
-          frame = window.requestAnimationFrame(finish);
-        }
-      }
-      frame = window.requestAnimationFrame(finish);
+      transition(target, window.scrollY, direction);
     }
 
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("pointerdown", reset);
     window.addEventListener("keydown", reset);
+    window.addEventListener("resize", reset);
     desktop.addEventListener("change", reset);
     return () => {
       reset();
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("pointerdown", reset);
       window.removeEventListener("keydown", reset);
+      window.removeEventListener("resize", reset);
       desktop.removeEventListener("change", reset);
     };
   }, []);

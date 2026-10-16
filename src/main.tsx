@@ -9,11 +9,12 @@ const root = document.getElementById("root");
 if (!root) throw new Error("Missing application root.");
 
 const path = window.location.pathname;
+const prerendered = root.hasChildNodes();
 const app = (
   <StrictMode>
-    <App path={path} />
+    <App path={path} restoreHash={!prerendered} />
   </StrictMode>
 );
-if (root.hasChildNodes()) hydrateRoot(root, app);
+if (prerendered) hydrateRoot(root, app);
 else createRoot(root).render(app);
 document.title = pageMetadata(resolvePage(path)).title;

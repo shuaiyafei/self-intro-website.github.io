@@ -144,6 +144,7 @@ summary:focus-visible {
   color: #bdc5c4;
 }
 .nav > a {
+  position: relative;
   min-height: 44px;
   display: flex;
   gap: 14px;
@@ -152,6 +153,18 @@ summary:focus-visible {
 }
 .nav > a:hover {
   color: #fff;
+}
+.nav > a[aria-current="location"] {
+  color: var(--accent);
+}
+.nav > a[aria-current="location"]::after {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  background: var(--accent);
+  content: "";
 }
 .nav-contact {
   margin-left: 26px;
@@ -1015,6 +1028,10 @@ h2 {
   }
   .nav a {
     padding: 8px 0;
+  }
+  .nav > a[aria-current="location"]::after {
+    right: auto;
+    width: 24px;
   }
   .nav-contact {
     border-top: 1px solid var(--line);

@@ -63,7 +63,7 @@ The build generates `/`, all three `/work/<slug>/` pages, `/notes/`, published n
 
 Prerendered HTML includes the main content and metadata before JavaScript runs. React hydrates it for interactive navigation controls. The notes loader excludes drafts and future-dated posts and sanitizes Markdown HTML.
 
-The header stays visible while scrolling on all screen sizes. Mobile keeps continuous scrolling with header-aware anchor offsets. On desktop (961px and wider), the homepage scrolls one section per wheel gesture, with native scrolling inside content taller than the viewport. Anchor links, keyboard navigation, and reduced-motion preferences remain supported; case studies and note pages use normal reading flow.
+The header stays visible while scrolling on all screen sizes, with the current section highlighted. Mobile keeps continuous scrolling with header-aware anchor offsets and a keyboard-accessible menu. On desktop (961px and wider), each transition advances one homepage section; sustained wheel input continues through successive sections, and reversing direction interrupts the current transition. Content taller than the viewport uses native scrolling. Anchor links, keyboard navigation, and reduced-motion preferences remain supported; case studies and note pages use normal reading flow.
 
 To roll back, revert the relevant source commit on `main` and rerun the workflow. The generated branch retains earlier deployment commits and records their source revisions. The previous hand-authored static site also remains in the original Git history at `4e5605a238a3dbecad4ff0f9f2404e0c09200171`; restoring it requires the old branch-based Pages configuration as well.
 

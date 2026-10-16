@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { profile } from "../data/profile";
+import { useActiveSection } from "../hooks/useActiveSection";
 
-export function Header({ home = false }: { home?: boolean }) {
+export function Header({ home = false, section }: { home?: boolean; section?: string }) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const prefix = home ? "" : "/";
+  const visibleSection = useActiveSection(home);
+  const activeSection = home ? visibleSection : section;
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
@@ -32,25 +35,23 @@ export function Header({ home = false }: { home?: boolean }) {
   }, [open]);
 
   return (
-    <header className={`header${open ? " menu-expanded" : ""}`} ref={headerRef}>
+    <header
+      className={`header${open ? " menu-expanded" : ""}`}
+      ref={headerRef}
+      onBlur={(event) => {
+        if (
+          event.relatedTarget instanceof Node &&
+          !event.currentTarget.contains(event.relatedTarget)
+        ) {
+          setOpen(false);
+        }
+      }}
+    >
       <div className="shell header-inner">
         <a className="brand" href={home ? "#top" : "/"} aria-label={`${profile.name}, home`}>
           <span className="brand-mark">YF</span>
           <span>{profile.name}</span>
         </a>
-        <nav
-          className="nav"
-          id="navigation"
-          aria-label="Main navigation"
-          onClick={() => setOpen(false)}
-        >
-          <a href={`${prefix}#about`}>About</a>
-          <a href={`${prefix}#work`}>Work</a>
-          <a href={home ? "#notes" : "/notes/"}>Notes</a>
-          <a className="nav-contact" href={`${prefix}#contact`}>
-            Let's talk <ArrowUpRight className="icon" aria-hidden="true" />
-          </a>
-        </nav>
         <button
           className="menu-button"
           type="button"
@@ -66,6 +67,38 @@ export function Header({ home = false }: { home?: boolean }) {
             <Menu className="icon" aria-hidden="true" />
           )}
         </button>
+        <nav
+          className="nav"
+          id="navigation"
+          aria-label="Main navigation"
+          onClick={() => setOpen(false)}
+        >
+          <a
+            href={`${prefix}#about`}
+            aria-current={activeSection === "about" ? "location" : undefined}
+          >
+            About
+          </a>
+          <a
+            href={`${prefix}#work`}
+            aria-current={activeSection === "work" ? "location" : undefined}
+          >
+            Work
+          </a>
+          <a
+            href={home ? "#notes" : "/notes/"}
+            aria-current={activeSection === "notes" ? "location" : undefined}
+          >
+            Notes
+          </a>
+          <a
+            className="nav-contact"
+            href={`${prefix}#contact`}
+            aria-current={activeSection === "contact" ? "location" : undefined}
+          >
+            Let's talk <ArrowUpRight className="icon" aria-hidden="true" />
+          </a>
+        </nav>
       </div>
     </header>
   );
