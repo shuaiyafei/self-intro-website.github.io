@@ -1,10 +1,17 @@
 import { useEffect } from "react";
+import { WheelGestures } from "wheel-gestures";
 
 export function useSectionPaging() {
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 961px)");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const sections = Array.from(document.querySelectorAll<HTMLElement>("#main > section"));
+    const gestures = WheelGestures({ preventWheelAction: false, reverseSign: false });
+    let momentum = false;
+    let inputDirection = 0;
+    const unsubscribe = gestures.on("wheel", (state) => {
+      if (!state.isEnding) momentum = state.isMomentum;
+    });
     let accumulated = 0;
     let lastWheelAt = 0;
     let locked = false;
@@ -31,10 +38,11 @@ export function useSectionPaging() {
       let settled = 0;
       window.scrollTo({ top: target, behavior: reducedMotion.matches ? "instant" : "smooth" });
 
-      // Release when the transition ends, even if wheel input continues.
+      // Keep a short input guard even when reduced motion skips the animation.
       function finish() {
         settled = Math.abs(window.scrollY - target) < 2 ? settled + 1 : 0;
-        if (settled >= 3 || performance.now() - started > 3000) {
+        const elapsed = performance.now() - started;
+        if ((settled >= 3 && elapsed >= 500) || elapsed > 3000) {
           reset();
         } else {
           frame = window.requestAnimationFrame(finish);
@@ -44,15 +52,35 @@ export function useSectionPaging() {
     }
 
     function onWheel(event: WheelEvent) {
-      if (
-        !desktop.matches ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        Math.abs(event.deltaX) >= Math.abs(event.deltaY)
-      ) {
+      if (!desktop.matches || event.ctrlKey || event.shiftKey) {
         return;
       }
       const direction = Math.sign(event.deltaY);
+      const vertical = Math.abs(event.deltaY) > Math.abs(event.deltaX);
+      const headerHeight = document.querySelector(".header")?.getBoundingClientRect().height ?? 0;
+      const viewportHeight = window.innerHeight - headerHeight;
+      const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewportHeight : 1;
+      const nativeMomentum = (event as WheelEvent & { momentum?: boolean }).momentum;
+      if (
+        vertical &&
+        inputDirection !== 0 &&
+        direction !== inputDirection &&
+        Math.abs(event.deltaY * unit) >= 40 &&
+        nativeMomentum !== true
+      ) {
+        gestures.feedWheel({
+          deltaMode: event.deltaMode,
+          deltaX: event.deltaX,
+          deltaY: event.deltaY,
+          deltaZ: event.deltaZ,
+          timeStamp: event.timeStamp,
+          momentum: false,
+        });
+      } else {
+        gestures.feedWheel(event);
+      }
+      if (!vertical) return;
+      if (!momentum) inputDirection = direction;
       let element = event.target instanceof Element ? event.target : null;
       while (element && element !== document.body) {
         if (element.matches("textarea, select, [contenteditable='true']")) return;
@@ -72,16 +100,20 @@ export function useSectionPaging() {
       const now = performance.now();
       if (locked) {
         event.preventDefault();
-        if (direction !== transitionDirection) {
+        if (!momentum && direction !== transitionDirection) {
+          if (now - lastWheelAt > 180 || Math.sign(accumulated) !== direction) accumulated = 0;
+          accumulated += event.deltaY * unit;
+          lastWheelAt = now;
+          if (Math.abs(accumulated) < 40) return;
           const target = transitionOrigin;
           const origin = transitionTarget;
           reset();
           transition(target, origin, direction);
+        } else {
+          accumulated = 0;
         }
         return;
       }
-      const headerHeight = document.querySelector(".header")?.getBoundingClientRect().height ?? 0;
-      const viewportHeight = window.innerHeight - headerHeight;
       const starts = sections.map(
         (section) => section.getBoundingClientRect().top + window.scrollY - headerHeight,
       );
@@ -102,8 +134,11 @@ export function useSectionPaging() {
       }
 
       event.preventDefault();
+      if (momentum) {
+        accumulated = 0;
+        return;
+      }
       if (now - lastWheelAt > 180 || Math.sign(accumulated) !== direction) accumulated = 0;
-      const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewportHeight : 1;
       accumulated += event.deltaY * unit;
       lastWheelAt = now;
       if (Math.abs(accumulated) < 40) return;
@@ -125,6 +160,8 @@ export function useSectionPaging() {
     desktop.addEventListener("change", reset);
     return () => {
       reset();
+      unsubscribe();
+      gestures.disconnect();
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("pointerdown", reset);
       window.removeEventListener("keydown", reset);
