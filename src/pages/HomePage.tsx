@@ -13,14 +13,8 @@ export function HomePage() {
   return (
     <>
       <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-art">
-          <img
-            src="/images/hero-sculpture.webp"
-            width="1672"
-            height="941"
-            alt=""
-            fetchPriority="high"
-          />
+        <div className="hero-art" aria-hidden="true">
+          <img src="/images/hero-layers.svg" width="760" height="720" alt="" fetchPriority="high" />
         </div>
         <div className="hero-shade" aria-hidden="true" />
         <div className="shell hero-inner">

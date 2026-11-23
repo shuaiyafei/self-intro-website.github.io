@@ -187,21 +187,22 @@ summary:focus-visible {
 }
 .hero-art {
   position: absolute;
-  inset: 0;
+  inset: 0 -2% 0 43%;
   overflow: hidden;
+  pointer-events: none;
 }
 .hero-art img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 56%;
+  object-fit: contain;
+  object-position: center;
 }
 .hero-shade {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, #10121366 0%, #10121324 38%, transparent 63%),
-    linear-gradient(0deg, #101213 0%, transparent 24%);
+    linear-gradient(90deg, #101213 0%, #101213e6 32%, transparent 62%),
+    linear-gradient(0deg, #101213 0%, transparent 18%);
 }
 .hero-inner {
   height: 100%;
@@ -510,17 +511,15 @@ h2 {
 }
 .project-art {
   position: relative;
-  background: #1a2020;
+  background: radial-gradient(ellipse at 55% 40%, #202e33 0%, #171e21 68%);
   overflow: hidden;
   aspect-ratio: 1.8;
 }
 .project-art > img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.85;
-  filter: invert(1) grayscale(0.8);
-  mix-blend-mode: lighten;
+  object-fit: contain;
+  opacity: 1;
   transition:
     transform 0.65s ease,
     opacity 0.35s;
@@ -531,14 +530,15 @@ h2 {
 }
 .featured-art > img {
   object-fit: contain;
-  padding: 32px 14px;
+  padding: 0;
 }
 .art-caption {
   position: absolute;
   left: 25px;
   bottom: 22px;
   font-size: 8px;
-  color: #9bb3b1;
+  letter-spacing: 0.05em;
+  color: #9cb8c1;
 }
 .project-index {
   position: absolute;
@@ -632,7 +632,7 @@ h2 {
 }
 .project .project-art > img {
   object-fit: contain;
-  padding: 20px 30px;
+  padding: 0;
 }
 .project-info {
   padding-top: 24px;
@@ -816,7 +816,7 @@ h2 {
     margin-top: 36px;
   }
   .hero-art img {
-    object-position: center 48%;
+    object-position: center;
   }
   .hero-copy {
     max-width: 760px;
@@ -871,8 +871,12 @@ h2 {
   .hero {
     min-height: 590px;
   }
+  .hero-art {
+    inset: 8% -20% 0 35%;
+    opacity: 0.72;
+  }
   .hero-art img {
-    object-position: 59% center;
+    object-position: center;
   }
   .hero-shade {
     background:
@@ -955,7 +959,7 @@ h2 {
     aspect-ratio: 1.45;
   }
   .project .project-art > img {
-    padding: 25px 10px;
+    padding: 0;
   }
   .contact h2 {
     font-size: 52px;
@@ -1059,9 +1063,13 @@ h2 {
   .hero-copy {
     padding-bottom: 90px;
   }
+  .hero-art {
+    inset: auto -108px -24px 18%;
+    height: 350px;
+    opacity: 0.42;
+  }
   .hero-art img {
-    object-position: 63% center;
-    opacity: 0.66;
+    object-position: center;
   }
   .hero-shade {
     background:
@@ -1459,7 +1467,7 @@ h2 {
     border-radius: 4px;
   }
   .selected-projects .featured-art > img {
-    padding: 20px 30px;
+    padding: 0;
   }
   .selected-projects .featured-copy {
     padding: 24px 0 0;

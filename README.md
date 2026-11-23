@@ -69,6 +69,6 @@ To roll back, revert the relevant source commit on `main` and rerun the workflow
 
 ## Assets
 
-The hero artwork was generated for this site. Project concept diagrams were migrated from the original site. Inter, Lucide, and WheelGestures license notices are in `public/licenses/`. Design exports and the high-resolution generated original are ignored by Git and are not part of the production bundle.
+The homepage hero and project concept illustrations are original, local SVG assets in `public/images/`. They share a restrained slate/cyan palette and stay crisp on high-density displays. The older generated hero bitmap is retained only for the social sharing image. Inter, Lucide, and WheelGestures license notices are in `public/licenses/`. Design exports and the high-resolution generated original are ignored by Git and are not part of the production bundle.
 
 Official references: [React hydration](https://react.dev/reference/react-dom/client/hydrateRoot), [Vite static deployment](https://vite.dev/guide/static-deploy.html), [GitHub Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages), and [Pages publishing sources](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).

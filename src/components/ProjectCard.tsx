@@ -22,7 +22,7 @@ export function ProjectArtwork({
 }) {
   return (
     <div className={`project-art${featured ? " featured-art" : ""}`}>
-      <img src={project.image} width="1536" height="1024" alt={project.imageAlt} loading="lazy" />
+      <img src={project.image} width="640" height="400" alt={project.imageAlt} loading="lazy" />
       {index !== undefined && (
         <span className="project-index">{String(index + 1).padStart(2, "0")}</span>
       )}

@@ -9,7 +9,7 @@ export const projects: Project[] = [
     summary:
       "Turning platform knowledge into grounded answers, design-to-DSL generation, and reusable agent skills.",
     lead: "A retrieval-augmented agent that answers platform questions, turns design structures into reusable DSL, and packages expert workflows as discoverable skills.",
-    image: "/images/project-ai.webp",
+    image: "/images/project-ai.svg",
     imageAlt:
       "Concept diagram connecting platform knowledge, retrieval, and generated interface structures",
     artCaption: "KNOWLEDGE → INTELLIGENCE → CREATION",
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     summary:
       "One component model across iOS, Android, and HarmonyOS, supported by tooling and quality gates.",
     lead: "A shared component model, runtime, and engineering system for delivering consistent experiences across iOS, Android, and HarmonyOS.",
-    image: "/images/project-runtime.webp",
+    image: "/images/project-runtime.svg",
     imageAlt: "Concept diagram of a shared runtime across multiple platforms",
     artCaption: "ONE MODEL. MANY POSSIBILITIES.",
     tags: ["Runtime", "Developer tooling", "Quality"],
@@ -127,7 +127,7 @@ export const projects: Project[] = [
     summary:
       "A full lifecycle platform connecting AST analysis, approval workflows, CI/CD, and operational visibility.",
     lead: "A lifecycle platform for discovering, approving, monitoring, and governing native bridge capabilities across a large cross-platform application ecosystem.",
-    image: "/images/project-governance.webp",
+    image: "/images/project-governance.svg",
     imageAlt: "Concept diagram of automated engineering analysis and delivery",
     artCaption: "CLARITY THROUGH THE LIFECYCLE.",
     tags: ["Node.js", "AST", "CI/CD"],

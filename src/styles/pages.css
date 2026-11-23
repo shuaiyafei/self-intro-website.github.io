@@ -57,7 +57,7 @@
 }
 .case-cover .project-art img {
   object-fit: contain;
-  padding: 35px;
+  padding: 0;
 }
 .case-cover .art-caption {
   font-size: 9px;
@@ -439,7 +439,7 @@
     aspect-ratio: 1.4;
   }
   .case-cover .project-art img {
-    padding: 24px 8px;
+    padding: 0;
   }
   .case-cover figcaption {
     font-size: 9px;
