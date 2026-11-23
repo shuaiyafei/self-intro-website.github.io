@@ -568,3 +568,69 @@
     padding-bottom: 22px;
   }
 }
+
+/* Project chapters use the same desktop paging model as the homepage. */
+@media (min-width: 961px) {
+  .case-page > .case-panel {
+    min-height: calc(100svh - var(--header-height));
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: grid;
+    align-content: center;
+    padding-block: clamp(24px, 4svh, 64px);
+  }
+  .case-hero .back-link {
+    margin-bottom: 28px;
+  }
+  .case-hero .eyebrow {
+    margin-bottom: 16px;
+  }
+  .case-hero h1 {
+    font-size: clamp(38px, min(4.5vw, 7.5svh), 64px);
+    margin-bottom: 22px;
+  }
+  .case-hero .case-lead {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+  .case-hero .project-tags {
+    margin-top: 18px;
+  }
+  .case-meta {
+    margin-top: 28px;
+    padding-top: 20px;
+  }
+  .case-meta dt {
+    margin-bottom: 8px;
+  }
+  .case-overview .project-art {
+    width: 100%;
+    max-height: clamp(180px, calc(100svh - var(--header-height) - 290px), 480px);
+  }
+  .case-overview .case-metrics {
+    padding-block: 28px 0;
+    border-bottom: 0;
+  }
+  .case-system > .case-story,
+  .case-outcome > .case-story {
+    padding-block: 0;
+  }
+  .case-panel.case-story,
+  .case-panel > .case-story {
+    grid-template-columns: minmax(150px, 0.65fr) minmax(0, 2fr);
+    gap: clamp(32px, 5vw, 80px);
+  }
+  .case-features {
+    margin-top: 28px;
+    row-gap: 24px;
+  }
+  .case-features article {
+    padding-top: 18px;
+  }
+  .case-features .principle-number {
+    margin-bottom: 10px;
+  }
+  .case-outcome {
+    row-gap: 40px;
+  }
+}

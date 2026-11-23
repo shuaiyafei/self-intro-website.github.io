@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { WheelGestures } from "wheel-gestures";
 
-export function useSectionPaging() {
+export function useSectionPaging(selector = "#main > section") {
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 961px)");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sections = Array.from(document.querySelectorAll<HTMLElement>("#main > section"));
+    const sections = Array.from(document.querySelectorAll<HTMLElement>(selector));
+    if (sections.length < 2) return;
     const gestures = WheelGestures({ preventWheelAction: false, reverseSign: false });
     let momentum = false;
     let inputDirection = 0;
@@ -168,5 +169,5 @@ export function useSectionPaging() {
       window.removeEventListener("resize", reset);
       desktop.removeEventListener("change", reset);
     };
-  }, []);
+  }, [selector]);
 }
