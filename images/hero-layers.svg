@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="720" viewBox="0 0 760 720" fill="none">
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="310" y2="310" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#28383d" stop-opacity=".9"/>
+      <stop offset=".5" stop-color="#172226" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#11191c"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="310" y2="310" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a5c3cb" stop-opacity=".75"/>
+      <stop offset=".48" stop-color="#66848e" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#b8d1d6" stop-opacity=".6"/>
+    </linearGradient>
+    <radialGradient id="atmosphere">
+      <stop stop-color="#7098a3" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#7098a3" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse">
+      <path d="M38 0H0V38" stroke="#a5c3cb" stroke-opacity=".13" stroke-width=".75"/>
+    </pattern>
+  </defs>
+  <ellipse cx="394" cy="380" rx="340" ry="310" fill="url(#atmosphere)"/>
+  <circle cx="389" cy="355" r="275" stroke="#7b9ba5" stroke-opacity=".1"/>
+  <circle cx="389" cy="355" r="239" stroke="#7b9ba5" stroke-opacity=".06" stroke-dasharray="2 10"/>
+  <path d="M389 62V87M389 623V648M96 355H121M657 355H682" stroke="#83a4ac" stroke-opacity=".4"/>
+  <g transform="matrix(.866 .5 -.866 .5 389 370)">
+    <rect width="310" height="310" rx="18" fill="url(#surface)" stroke="url(#edge)"/>
+    <rect x="24" y="24" width="262" height="262" rx="9" stroke="#7d9da7" stroke-opacity=".16"/>
+    <path d="M58 253H110M58 265H89" stroke="#90b4bf" stroke-opacity=".4" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <path d="M133 223V501M645 223V501M389 75V370" stroke="#8eafb8" stroke-opacity=".16" stroke-dasharray="3 8"/>
+  <g transform="matrix(.866 .5 -.866 .5 389 224)">
+    <rect width="310" height="310" rx="18" fill="url(#surface)" stroke="url(#edge)"/>
+    <rect x="24" y="24" width="262" height="262" rx="9" stroke="#8dabb4" stroke-opacity=".2"/>
+    <path d="M66 115H244M66 155H244M66 195H244M115 66V244M155 66V244M195 66V244" stroke="#9dbfc8" stroke-opacity=".13"/>
+    <rect x="121" y="121" width="68" height="68" rx="10" fill="#45616b" fill-opacity=".2" stroke="#9bbbc5" stroke-opacity=".55"/>
+  </g>
+  <g transform="matrix(.866 .5 -.866 .5 389 78)">
+    <rect width="310" height="310" rx="18" fill="url(#surface)" stroke="url(#edge)" stroke-width="1.5"/>
+    <rect x="24" y="24" width="262" height="262" rx="9" fill="url(#grid)" stroke="#93b2bb" stroke-opacity=".22"/>
+    <rect x="109" y="109" width="92" height="92" rx="16" fill="#273b42" stroke="#b1ccd3" stroke-opacity=".6"/>
+    <rect x="125" y="125" width="60" height="60" rx="8" stroke="#9dbfc8" stroke-opacity=".3"/>
+    <path d="M155 139V171M139 155H171" stroke="#c1d8de" stroke-width="2" stroke-linecap="round"/>
+    <path d="M56 61H99M56 72H82" stroke="#8caeb7" stroke-opacity=".6" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="253" cy="253" r="4" fill="#b8d3d9"/>
+  </g>
+  <circle cx="389" cy="78" r="3" fill="#a8c8d0"/>
+  <circle cx="654" cy="231" r="3" fill="#a8c8d0" fill-opacity=".7"/>
+  <circle cx="389" cy="678" r="2" fill="#a8c8d0" fill-opacity=".4"/>
+</svg>

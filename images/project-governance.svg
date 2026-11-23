@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" fill="none">
+  <defs>
+    <linearGradient id="panel" x1="100" y1="80" x2="550" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#253337"/><stop offset="1" stop-color="#172023"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#bad5da"/><stop offset="1" stop-color="#759ba8"/>
+    </linearGradient>
+    <radialGradient id="glow"><stop stop-color="#729eaa" stop-opacity=".13"/><stop offset="1" stop-color="#729eaa" stop-opacity="0"/></radialGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".75" fill="#a6c4cd" fill-opacity=".12"/></pattern>
+  </defs>
+  <rect width="640" height="400" fill="url(#dots)"/>
+  <ellipse cx="330" cy="202" rx="270" ry="170" fill="url(#glow)"/>
+  <path d="M176 166H279M361 166H464" stroke="#7c9aa5" stroke-width="1.5"/>
+  <path d="m270 161 9 5-9 5M455 161l9 5-9 5" stroke="#a8c4cd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="84" y="120" width="92" height="92" rx="19" fill="url(#panel)" stroke="#7c9da9" stroke-opacity=".8"/>
+  <path d="M120 145H109V187H120M140 145H151V187H140M133 151L126 181" stroke="#bad1d8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="274" y="120" width="92" height="92" rx="19" fill="#22373f" stroke="#aecbd3" stroke-opacity=".85"/>
+  <path d="m299 166 14 14 27-28" stroke="#c1dadf" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="464" y="120" width="92" height="92" rx="19" fill="url(#panel)" stroke="#7c9da9" stroke-opacity=".8"/>
+  <path d="M492 177V151H518M492 151L528 187M514 187H528V173" stroke="#bad1d8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#b2c8cd" font-family="Inter,Arial,sans-serif" font-size="16" text-anchor="middle"><text x="130" y="244">Scan</text><text x="320" y="244">Review</text><text x="510" y="244">Deliver</text></g>
+  <rect x="103" y="279" width="434" height="43" rx="8" fill="#1a272c" stroke="#6b8d9a" stroke-opacity=".35"/>
+  <g fill="#90b3bf"><circle cx="127" cy="300" r="4"/><circle cx="260" cy="300" r="4"/><circle cx="393" cy="300" r="4"/></g>
+  <path d="M141 300H224M274 300H357M407 300H513" stroke="#7899a5" stroke-width="3" stroke-linecap="round" opacity=".45"/>
+  <path d="M130 266V279M320 266V279M510 266V279" stroke="#7899a5" stroke-opacity=".5" stroke-dasharray="2 4"/>
+</svg>
